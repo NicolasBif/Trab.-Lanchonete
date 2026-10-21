@@ -1,0 +1,120 @@
+#Nicolas Vicente Bif, Bruno Otávio da Silveira e Guilherme Isidoro Possamai
+                  
+total1= 0
+total2= 0
+total3= 0
+total4= 0
+total5= 0
+total6= 0
+
+pagamento = ('Pix', 'Dinheiro', 'Cartão')
+carrinho = {}
+
+print("*"*50)
+print(('BEM VINDO AO RESTAURANTE DO BILL') .center(1))
+print("*"*50)
+
+preco_produto = {'hamburguer': 40 ,
+                  'batatas': 10,
+                  'xsalada': 20,
+                  'refri': 7,
+                  'agua': 3,
+                  'torta': 12
+                  }
+
+def mostrar_menu():
+    print("\n" + "="*30)
+    print(("Cardápio").center(31))
+    print("="*30)
+    print(("🍟 Comidas 🍟").center(29))
+    print("="*30)
+    print(f"1 - Hambúrguer | R$ {preco_produto['hamburguer']},00")
+    print(f"2 - Batatas | R$ {preco_produto['batatas']},00")
+    print(f"3 - X-salada | R$ {preco_produto['xsalada']},00")
+    print("="*30)
+    print(("🥤 Bebidas 🥤").center(29))
+    print("="*30)
+    print(f"4 - Refrigerante | R$ {preco_produto['refri']},00")
+    print(f"5 - Água | R$ {preco_produto['agua']},00")
+    print("="*30)
+    print(("🍦 Sobremesas 🍦").center(29))
+    print("="*30)
+    print(f"6 - Torta de bolacha | R$ {preco_produto['torta']},00")
+    print("="*30)
+    print('7 - Remover produtos')
+    print('8 - Fechar pedido')
+    print("="*30)
+
+    return input("Escolha uma opção: ")
+
+def total_pedido():
+        print(total1 + total2 + total3 + total4 + total5 + total6)
+
+def cauculo_total ():
+    print(carrinho)
+    
+
+while True:
+    opcao = mostrar_menu()
+    if opcao == '1':
+        quantidade1 = int(input('Quantidade:'))
+        total1 = preco_produto['hamburguer'] * quantidade1
+        carrinho['hambúrguer'] = quantidade1
+        print(f'Total: R${total1}')
+    elif opcao == '2':
+        quantidade2 = int(input('Quantidade:'))
+        total2 = preco_produto['batatas'] * quantidade2
+        carrinho['batatas']=quantidade2
+        print(f'Total: R${total2}')
+    elif opcao == '3':
+        quantidade3 = int(input('Quantidade:'))
+        total3 = preco_produto['xsalada'] * quantidade3
+        carrinho['X-salada'] = quantidade3
+        print(f'Total: R${total3}')
+    elif opcao == '4':
+        quantidade4 = int(input('Quantidade:'))
+        total4 = preco_produto['refri'] * quantidade4
+        carrinho['Refrigerante'] =quantidade4
+        print(f'Total: R${total4}')
+    elif opcao == '5':
+        quantidade5 = int(input('Quantidade:'))
+        total5 = preco_produto['agua'] * quantidade5
+        carrinho['Água'] = quantidade5
+        print(f'Total: R${total5}')
+    elif opcao == '6':
+        quantidade6 = int(input('Quantidade:'))
+        total6 = preco_produto['torta'] * quantidade6
+        carrinho['Torta de bolacha']=quantidade6
+        print(f'Total: R${total6}')
+    elif opcao == '7':
+        quantidade7 = input('Quais produtos você deseja remover?:').lower()
+        if quantidade7 == 'hambúrguer':
+            del carrinho['hambúrguer']
+            total1 -= 40 * quantidade1
+        if quantidade7 == 'batatas':
+            del carrinho['batatas']
+            total1 -= 10 * quantidade2
+        if quantidade7 == 'x-salada':
+            del carrinho['X-salada']
+            total1 -= 20 * quantidade3
+        if quantidade7 == 'refrigerante':
+            del carrinho['Refrigerante']
+            total1 -= 7 * quantidade4
+        if quantidade7 == 'água':
+            del carrinho['Água']
+            total1 -= 3 * quantidade5
+        if quantidade7 == 'torta de bolacha':
+            del carrinho['Torta de bolacha']
+            total1 -= 12 * quantidade6
+    elif opcao == '8':
+        quantidade8 = print(' Você fechou seu pedido, aqui está o resumo do seu carrinho:')
+        total_pedido()
+        print("R$")
+        cauculo_total()
+        print(pagamento)
+        break
+
+
+    total_pedido()
+    
+    cauculo_total()
